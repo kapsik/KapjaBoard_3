@@ -41,8 +41,8 @@
 			
 			<tr>
 				<td>${data.bno }</td>
-				<td><input type="text" name="btitle" placeholder="${data.btitle }"> </td>
-				<td>${data.bwriter }</td>
+				<td><input hidden="hidden" /><input type="text" name="btitle" placeholder="${data.btitle }"> </td>
+				<td><input hidden="hidden" />${data.bwriter }</td>
 				<td>${data.bdate }</td>
 				<td>${data.bhit }</td>
 			</tr>
