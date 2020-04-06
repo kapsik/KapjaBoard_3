@@ -1,0 +1,18 @@
+@charset "UTF-8";
+#home_body{
+	width: 900px;
+	height: 400px;
+	text-align:center;
+	margin:0 auto;
+	padding:30px 60px;
+	background-color:#A4A4A4 ;
+}
+
+#home_login{
+	width: 5px;
+	height: 5px;
+	text-align: center;;
+	padding:30px 60px;
+	margin:0 auto;
+	background-color: #ECE0F8;
+}
