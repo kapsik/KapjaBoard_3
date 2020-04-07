@@ -9,20 +9,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.kapjaBrothers.springBoard.entity.listData;
+import com.kapjaBrothers.springBoard.entity.listDataReply;
+import com.kapjaBrothers.springBoard.entity.replyData;
 
 public class listServiceImpl implements listService{
 
 	@Override
-	public List<listData> listView() {
+	public List<listDataReply> listView() {
 		System.out.println("listServiceImpl -> listView");
 		
-		List<listData> list = new ArrayList<listData>();
+		//List<listData> list = new ArrayList<listData>();
+		List<listDataReply> list = new ArrayList<listDataReply>();
 		
 		String url = "jdbc:oracle:thin:@localhost:1521:orcl";
 		String user = "KAPJA";
 		String password = "1234";
 		
-		String sql = "SELECT * FROM KAPJA_BOARD2 ORDER BY BNO DESC";
+		//String sql = "SELECT * FROM KAPJA_BOARD2 ORDER BY BNO DESC";
+		String sql = "SELECT K.BNO, K.BTITLE, K.BDATE, K.BHIT, K.BWRITER, COUNT(R.RNO) RNO\r\n" + 
+				" FROM KAPJA_BOARD2 K\r\n" + 
+				" LEFT JOIN KAPJA_REPLY R ON K.BNO = R.BNO\r\n" + 
+				" GROUP BY K.BNO, K.BTITLE, K.BDATE, K.BHIT, K.BWRITER\r\n" + 
+				" ORDER BY K.BDATE DESC";
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -37,13 +45,15 @@ public class listServiceImpl implements listService{
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				listData data = new listData();
+				//listData data = new listData();
+				listDataReply data = new listDataReply();
 				data.setBno(rs.getInt("bno"));
 				data.setBtitle(rs.getString("btitle"));
-				data.setBcontent(rs.getString("bcontent"));
+				//data.setBcontent(rs.getString("bcontent"));
 				data.setBwriter(rs.getString("bwriter"));
 				data.setBdate(rs.getDate("bdate"));
 				data.setBhit(rs.getInt("bhit"));
+				data.setrno(rs.getInt("rno"));
 				
 				list.add(data);
 				
@@ -230,6 +240,56 @@ public class listServiceImpl implements listService{
 		}
 		
 		
+	}
+
+	@Override
+	public List<replyData> replyView(int bno) {
+		
+		System.out.println("listServiceImpl -> replyView");
+		
+		List<replyData> rList = new ArrayList<replyData>();
+		
+		String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+		String sql = "SELECT RNO, CONTENT, WRITER, REGDATE FROM KAPJA_REPLY WHERE BNO = ? ORDER BY RNO DESC";
+		String user = "KAPJA";
+		String password = "1234";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			Connection conn = DriverManager.getConnection(url, user, password);
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, bno);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				
+				replyData data = new replyData();
+				
+				//data.setBno(rs.getInt("BNO"));
+				data.setRno(rs.getInt("RNO")); 
+				data.setContent(rs.getString("CONTENT")); 
+				data.setWriter(rs.getString("WRITER")); 
+				data.setRegDate(rs.getDate("REGDATE"));
+				
+				System.out.println(data);
+				
+				rList.add(data);
+			}
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return rList;
 	}
 
 }

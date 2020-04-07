@@ -16,3 +16,56 @@
 	margin:0 auto;
 	background-color: #ECE0F8;
 }
+
+#listViewUp{
+	width: 400px;
+	height: 100px;
+	text-align: center;;
+	
+	margin:0 auto;
+	background-color: #F2F2F2;
+}
+
+#listViewDetailUp{
+	width: 400px;
+	height: 100px;
+	text-align: center;;
+	
+	margin:0 auto;
+	background-color: #F2F2F2;
+}
+
+#lBcontent{
+	background-color: #FFFFFF;
+}
+
+#listViewReply{
+	width: 400px;
+	height: 100px;
+	text-align: center;;
+	
+	margin:0 auto;
+	background-color: #EFFBF8;
+}
+
+#rContent{
+	background-color: #FFFFFF;
+}
+
+#replyText{
+	width: 330px;
+	height: 55px;
+	text-align: left;;
+	
+	margin:0 auto;
+	background-color: #FFFFFF;
+}
+
+#replyUpdate{
+	width: 55px;
+	height: 60px;
+	text-align: center;;
+	
+	margin:0 auto;
+	background-color: #EFFBF8;
+}

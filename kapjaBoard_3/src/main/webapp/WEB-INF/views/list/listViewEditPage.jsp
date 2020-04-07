@@ -27,7 +27,7 @@
 	}
 </script>
 <body>
-	<div align="center">
+	<div id="listViewEditBody" align="center">
 		<form action="listUpdate" name="frm1">
 		<table border="1">
 			<h1>갑자게시판(수정페이지)</h1>

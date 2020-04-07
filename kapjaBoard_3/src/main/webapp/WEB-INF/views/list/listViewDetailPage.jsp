@@ -5,13 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="resources/css/homePage.css">
 <title>Insert title here</title>
 </head>
 <body>
-	<div align="center">
+	<div id="listViewDetailBody" align="center">
 		<form action="listViewEditPage">
 		<h1>갑자게시판(내용페이지)</h1>
-		<table border="1">
+		<table id="listViewDetailUp" border="1">
 			<tr>
 				<td>번호</td>
 				<td>제목</td>
@@ -28,7 +29,7 @@
 				<td>${l.bhit }</td>
 			</tr>
 			<tr>
-				<td colspan="5">${l.bcontent }</td>
+				<td id="lBcontent" colspan="5">${l.bcontent }</td>
 				<td hidden="hidden">
 					<input type="hidden" name="bno" value="${l.bno }">
 					<input type="hidden" name="btitle" value="${l.btitle }">
@@ -39,6 +40,28 @@
 				</td>
 			</tr>
 			</c:forEach>
+		</table>
+		<table id="listViewReply" border="1">
+		<c:forEach var="r" items="${rList }">
+		<tr>
+			<%-- <td>${r.rno }</td> --%>
+			<td>${r.writer }</td>
+			<td>${r.regDate }</td>
+		</tr>
+		<tr>
+			<td id="rContent" colspan="3">${r.content }</td>
+		</tr>
+		</c:forEach>
+		</table>
+		<table>
+			<tr>
+				<td>
+					<textarea id="replyText" rows="" cols=""></textarea>
+				</td>
+				<td>
+					<input id="replyUpdate" type="button" value="확인">
+				</td>
+			</tr>
 		</table>
 		<table>
 		<c:forEach var="l" items="${list }">

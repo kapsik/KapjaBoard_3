@@ -16,7 +16,7 @@ public class ListController {
 	public String listView(Model model) {
 		System.out.println("ListController -> listViewPage");
 		listService ls = new listServiceImpl();
-	
+		
 		model.addAttribute("list", ls.listView());
 		return "list/listViewPage";
 		
@@ -28,6 +28,7 @@ public class ListController {
 		
 		listService ls = new listServiceImpl();
 		model.addAttribute("list",ls.listViewDetail(bno));
+		model.addAttribute("rList",ls.replyView(bno));
 		return "list/listViewDetailPage";
 		
 	}

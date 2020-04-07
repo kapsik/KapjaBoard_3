@@ -5,11 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="resources/css/homePage.css">
 <title>Insert title here</title>
 </head>
 <body>
-	<div align="center">
-		<table border="1">
+	<div id="listViewBody" align="center" >
+		<table id="listViewUp" border="1">
 			<h1>갑자게시판(목록페이지)</h1>
 			<tr>
 				<td>번호</td>
@@ -21,7 +22,7 @@
 			<c:forEach var="l" items="${list }">
 			<tr>
 				<td>${l.bno }</td>
-				<td><a href="listViewDetailPage?bno=${l.bno }">${l.btitle }</a><span>[0]</span></td>
+				<td><a href="listViewDetailPage?bno=${l.bno }">${l.btitle }</a><span>[${l.rno }]</span></td>
 				<td><a href="listViewDetailPage?bno=${l.bno }">${l.bwriter }</a></td>
 				<td>${l.bdate }</td>
 				<td>${l.bhit }</td>
