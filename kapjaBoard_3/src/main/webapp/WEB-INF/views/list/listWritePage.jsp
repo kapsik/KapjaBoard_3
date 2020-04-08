@@ -24,7 +24,7 @@
 				return theForm.bcontent.focus();
 			}
 		}else {
-			alert("잘했어 치타");
+			//alert("잘했어 치타");
 			theForm.submit();
 		}
 	}

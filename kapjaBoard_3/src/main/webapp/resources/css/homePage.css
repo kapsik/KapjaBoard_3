@@ -11,7 +11,7 @@
 #home_login{
 	width: 5px;
 	height: 5px;
-	text-align: center;;
+	text-align: center;
 	padding:30px 60px;
 	margin:0 auto;
 	background-color: #ECE0F8;
@@ -20,7 +20,7 @@
 #listViewUp{
 	width: 400px;
 	height: 100px;
-	text-align: center;;
+	text-align: center;
 	
 	margin:0 auto;
 	background-color: #F2F2F2;
@@ -29,7 +29,7 @@
 #listViewDetailUp{
 	width: 400px;
 	height: 100px;
-	text-align: center;;
+	text-align: center;
 	
 	margin:0 auto;
 	background-color: #F2F2F2;
@@ -42,7 +42,7 @@
 #listViewReply{
 	width: 400px;
 	height: 100px;
-	text-align: center;;
+	text-align: center;
 	
 	margin:0 auto;
 	background-color: #EFFBF8;
@@ -55,7 +55,7 @@
 #replyText{
 	width: 330px;
 	height: 55px;
-	text-align: left;;
+	text-align: left;
 	
 	margin:0 auto;
 	background-color: #FFFFFF;
@@ -64,8 +64,26 @@
 #replyUpdate{
 	width: 55px;
 	height: 60px;
-	text-align: center;;
+	text-align: center;
 	
 	margin:0 auto;
-	background-color: #EFFBF8;
+	background-color: rgb(41, 167, 136);
+}
+
+#replyWriter{
+	width: 120px;
+	height: 20px;
+	text-align: left;
+	
+	margin:0 auto;
+	background-color: #FFFFFF;
+}
+
+#replyDate{
+	width: 120px;
+	height: 20px;
+	text-align: left;
+	
+	margin-left: 80px;
+	background-color: #FFFFFF;
 }
