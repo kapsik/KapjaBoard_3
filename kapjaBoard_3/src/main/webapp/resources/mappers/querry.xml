@@ -35,6 +35,15 @@ CREATE TABLE KAPJA_BOARD2
     BHIT        NUMBER
 );
 
+회원가입 테이블 생성
+CREATE TABLE KAPJA_MEMBERS
+(
+    ID          VARCHAR2(30)    NOT NULL,
+    PASSWORD    VARCHAR2(30)    NOT NULL,
+    EMAIL       VARCHAR2(100)   NOT NULL,
+    PRIMARY KEY (ID)
+);
+
 
 
 -->
