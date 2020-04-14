@@ -1,9 +1,14 @@
 package com.kapjaBrothers.springBoard.controller;
 
+import java.util.logging.Logger;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kapjaBrothers.springBoard.entity.membersData;
 
@@ -17,12 +22,29 @@ public class HomeController {
 		
 	}
 	
-	@RequestMapping(value = "/kapjaJoin",method = RequestMethod.POST)
-	public String join(membersData mData, Model model) {
+	@RequestMapping(value = "/kapjaJoinPage",method = RequestMethod.GET)
+	public String join() {
 		System.out.println("HomeController -> join");
-		System.out.println(mData);
 		
-		return null;
+		return "home/registerPage";
 		
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/idCheck",method = RequestMethod.GET)
+	public String idCheck(Model model, HttpServletRequest request) {
+		System.out.println("HomeController -> idCheck");
+		String userId = request.getParameter("userId");
+		System.out.println(userId);
+		
+		
+		
+		return null;
+	}
+	
+
+
+
+
+
 }

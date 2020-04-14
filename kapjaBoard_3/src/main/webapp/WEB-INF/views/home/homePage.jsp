@@ -11,7 +11,7 @@
 	<div id="home_body">
 		<h1>갑자의 홈풰이지</h1>
 		<h2>어서오시게</h2>
-			<form action="kapjaJoin">
+			<form action="">
 				<div>
 					<div>로그인</div>
 					<div><input type="text" id="homeId" name="homeId" placeholder="아이디 입력"></div>
@@ -25,7 +25,7 @@
 				</div>
 			</form>
 				<div>
-					<div><a href=""><input type="button" value="가입하기"></a></div>
+					<div><a href="kapjaJoinPage"><input type="button" value="가입하기"></a></div>
 				</div>
 	</div>
 	
