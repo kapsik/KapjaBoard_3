@@ -3,7 +3,7 @@ package com.kapjaBrothers.springBoard.service;
 import com.kapjaBrothers.springBoard.entity.membersData;
 
 public interface memberService {
-	public void idCheck(String id);
+	public int idCheck(String id);
 	public void passwordCheck(String pw);
 	public void emailCheck(String email);
 	public void memberRegister(membersData mData);

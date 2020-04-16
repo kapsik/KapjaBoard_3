@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kapjaBrothers.springBoard.entity.membersData;
+import com.kapjaBrothers.springBoard.service.memberService;
+import com.kapjaBrothers.springBoard.service.memberServiceImpl;
 
 @Controller
 public class HomeController {
@@ -31,15 +33,21 @@ public class HomeController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/idCheck",method = RequestMethod.GET)
-	public String idCheck(Model model, HttpServletRequest request) {
+	@RequestMapping(value = "/idCheck",method = RequestMethod.POST)
+	public int idCheck(Model model, HttpServletRequest request) {
 		System.out.println("HomeController -> idCheck");
 		String userId = request.getParameter("userId");
 		System.out.println(userId);
+		memberService ms = new memberServiceImpl();
+		
+		int result = 0;
+		
+		if(ms.idCheck(userId) != 0) {
+			result = 1;
+		}
 		
 		
-		
-		return null;
+		return result;
 	}
 	
 

@@ -16,12 +16,16 @@
 		if(theForm.replyWriter.value =="" || theForm.replyText.value ==""){
 			if(theForm.replyWriter.value ==""){
 				alert("작성자를 입력하시오");
+				return theForm.replyWriter.focus();
+				
 			}else if(theForm.replyText.value==""){
 				alert("내용을 입력하시오");
+				return theForm.replyText.focus();
+				
 			}
-		}else{
-			//alert("잘했어 치타");
-			submit();
+		}else if(theForm.replyWriter.value !="" && theForm.replyText.value !=""){
+			alert("잘했어 치타");
+			theForm.submit();
 		}
 		
 		
@@ -88,7 +92,7 @@
 			</tr>
 			<tr>
 				<td><textarea id="replyText" name="content" rows="" cols=""></textarea></td>
-				<td><input id="replyUpdate" type="submit" value="확인" onclick="check_onclick()"></td>
+				<td><input id="replyUpdate" type="button" value="확인" onclick="check_onclick()"></td>
 			</tr>
 		</table>
 	</c:forEach>
