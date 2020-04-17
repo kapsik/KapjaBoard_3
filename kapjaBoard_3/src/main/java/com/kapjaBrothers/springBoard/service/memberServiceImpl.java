@@ -65,9 +65,48 @@ public class memberServiceImpl implements memberService{
 	}
 
 	@Override
-	public void emailCheck(String email) {
-		// TODO Auto-generated method stub
+	public int emailCheck(String email) {
+		System.out.println("memberServiceImpl -> emailCheck");
+		System.out.println("email = "+email);
 		
+		String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+		String user = "KAPJA";
+		String password = "1234";
+		String sql = "SELECT EMAIL FROM KAPJA_MEMBERS WHERE EMAIL = ?";
+		int emailCheckResult = 0;
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			
+			
+			Connection conn = DriverManager.getConnection(url, user, password);
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, email);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				emailCheckResult = 1;
+				System.out.println("이메일이 이미있음");
+			}else {
+				emailCheckResult = 0;
+				System.out.println("이메일 등록가능");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		return emailCheckResult;
 	}
 
 	@Override
