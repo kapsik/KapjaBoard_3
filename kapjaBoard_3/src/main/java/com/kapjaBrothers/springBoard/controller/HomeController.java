@@ -1,15 +1,14 @@
 package com.kapjaBrothers.springBoard.controller;
 
-import java.util.logging.Logger;
-
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kapjaBrothers.springBoard.entity.membersData;
 import com.kapjaBrothers.springBoard.service.memberService;
@@ -20,14 +19,14 @@ public class HomeController {
 	
 	@RequestMapping(value = "/homePage", method = RequestMethod.GET)
 	public String homePage() {
-		System.out.println("HomeController -> homePage");
+		System.out.println("HomeController(homePage)");
 		return "home/homePage";
 		
 	}
 	
 	@RequestMapping(value = "/kapjaJoinPage",method = RequestMethod.GET)
 	public String join() {
-		System.out.println("HomeController -> join");
+		System.out.println("HomeController(join)");
 		
 		return "home/registerPage";
 		
@@ -47,7 +46,7 @@ public class HomeController {
 			result = 1;
 		}
 		
-		System.out.println("controller -> idCheck = "+result);
+		System.out.println("controller(idCheck) = "+result);
 		return result;
 	}
 	
@@ -57,6 +56,7 @@ public class HomeController {
 	public int emailCheck(HttpServletRequest request){
 		System.out.println("HomeController->emailCheck");
 		String email = request.getParameter("userEmail");
+		System.out.println(email);
 		memberService ms = new memberServiceImpl();
 		
 		int result = 0;
@@ -65,18 +65,44 @@ public class HomeController {
 			result = 1;
 		}
 		
+		System.out.println("controller(emailCheck) = "+result);
 		return result;
 	}
 	
 	
 	
 	
-	@RequestMapping(value = "/kapjaJoin", method = RequestMethod.POST)
+	@RequestMapping(value = "/memberJoin", method = RequestMethod.POST)
 	public String memberJoin(Model model, membersData mData) {
-		System.out.println("HomeController -> memberJoin");
+		System.out.println("HomeController(memberJoin)");
 		System.out.println(mData);
-		return null;
+		
+		memberService ms = new memberServiceImpl();
+		ms.memberRegister(mData);
+		
+		return "home/homePage";
 	}
 
+	@RequestMapping(value = "/memberLogin", method = RequestMethod.POST)
+	public String memberLogin(membersData mData, HttpServletRequest request, RedirectAttributes rttr) {
+		System.out.println("HomeController(memberLogin)");
+		//System.out.println(mData);
+		
+		HttpSession session = request.getSession();
+		memberService ms = new memberServiceImpl();
+		membersData result = ms.memberLogin(mData);
+		
+		if(result == null) {
+			session.setAttribute("member", null);
+			rttr.addFlashAttribute("msg", false);
+			System.out.println("result = null");
+		}else {
+			session.setAttribute("member", result);
+			System.out.println("result = " + result);
+		}
+		
+		return "redirect:/listViewPage";
+		
+	}
 
 }

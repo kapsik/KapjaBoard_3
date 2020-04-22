@@ -24,7 +24,7 @@
 				
 			}
 		}else if(theForm.replyWriter.value !="" && theForm.replyText.value !=""){
-			alert("잘했어 치타");
+			console.log("잘했어 치타");
 			theForm.submit();
 		}
 		

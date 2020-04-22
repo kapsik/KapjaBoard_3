@@ -9,9 +9,19 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<div>
+		<h5>
+			<c:if test="${member != null }">
+				${member.id }
+			</c:if>
+			<c:if test="${member != null}"><a href="">로그아웃</a></c:if>
+			<c:if test="${member == null}"><a href="">로그인</a></c:if>
+		</h5>
+		<h1 align="center"><a href="homePage">홈으로</a></h1>
+	</div>
 	<div id="listViewBody" align="center" >
+		<h1>갑자게시판(목록페이지)</h1>
 		<table id="listViewUp" border="1">
-			<h1>갑자게시판(목록페이지)</h1>
 			<tr>
 				<td>번호</td>
 				<td>제목</td>

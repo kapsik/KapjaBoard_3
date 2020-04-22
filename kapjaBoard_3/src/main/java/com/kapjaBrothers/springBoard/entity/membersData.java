@@ -30,11 +30,19 @@ public class membersData {
 	}
 	
 	public membersData(String id, String password, String email) {
-		super();
+		
 		this.id = id;
 		this.password = password;
 		this.email = email;
 	}
+	
+	public membersData(String id, String password) {
+		
+		this.id = id;
+		this.password = password;
+		
+	}
+	
 	@Override
 	public String toString() {
 		return "membersData 객체 [id=" + id + ", password=" + password + ", email=" + email + "]";

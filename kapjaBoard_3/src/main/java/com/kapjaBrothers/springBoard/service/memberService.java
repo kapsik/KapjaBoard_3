@@ -9,5 +9,7 @@ public interface memberService {
 	public void memberRegister(membersData mData);
 	public void memberDelete(String id);
 	public void memberEdit(String id);
+	public membersData memberLogin(membersData mData);
+	public void memberLogout(membersData mData);
 	
 }
