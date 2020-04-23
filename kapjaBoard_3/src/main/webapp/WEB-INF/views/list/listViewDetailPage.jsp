@@ -45,23 +45,23 @@
 				<td>날짜</td>
 				<td>조회수</td>
 			</tr>
-			<c:forEach var="l" items="${list }">
+			<c:forEach var="l1" items="${list }">
 			<tr>
-				<td>${l.bno }</td>
-				<td>${l.btitle }</td>
-				<td>${l.bwriter }</td>
-				<td>${l.bdate }</td>
-				<td>${l.bhit }</td>
+				<td>${l1.bno }</td>
+				<td>${l1.btitle }</td>
+				<td>${l1.bwriter }</td>
+				<td>${l1.bdate }</td>
+				<td>${l1.bhit }</td>
 			</tr>
 			<tr>
-				<td id="lBcontent" colspan="5">${l.bcontent }</td>
+				<td id="lBcontent" colspan="5">${l1.bcontent }</td>
 				<td hidden="hidden">
-					<input type="hidden" name="bno" value="${l.bno }">
-					<input type="hidden" name="btitle" value="${l.btitle }">
-					<input type="hidden" name="bcontent" value="${l.bcontent }">
-					<input type="hidden" name="bwriter" value="${l.bwriter }">
-					<input type="hidden" name="bdate" value="${l.bdate }">
-					<input type="hidden" name="bhit" value="${l.bhit }">
+					<input type="hidden" name="bno" value="${l1.bno }">
+					<input type="hidden" name="btitle" value="${l1.btitle }">
+					<input type="hidden" name="bcontent" value="${l1.bcontent }">
+					<input type="hidden" name="bwriter" value="${l1.bwriter }">
+					<input type="hidden" name="bdate" value="${l1.bdate }">
+					<input type="hidden" name="bhit" value="${l1.bhit }">
 				</td>
 			</tr>
 			</c:forEach>
@@ -78,16 +78,16 @@
 			</tr>
 			</c:forEach>
 		</table>
-	<form action="replyWrite" name="frm1">
-	<c:forEach var="l" items="${list}">
+	<form action="replyWrite" name="frm1" autocomplete="off">
+	<c:forEach var="l2" items="${list}">
 		<table>
 			<tr>
 				<td colspan="2">
-					<input type="text" id="replyWriter" name="writer" >
+					<input type="text" id="replyWriter" name="writer" value="${member.id}" readonly="readonly">
 					<jsp:useBean id="now" class="java.util.Date"></jsp:useBean>
 					<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today"/>
 					<input type="text" id="replyDate" name="replyDate" value="${today }" readonly="readonly">
-					<input type="text" name="bno" hidden="hidden" value="${l.bno }">
+					<input type="text" name="bno" hidden="hidden" value="${l2.bno }">
 				</td>
 			</tr>
 			<tr>
@@ -99,19 +99,21 @@
 	</form>	
 	<form action="listViewEditPage">
 		<table>
-		<c:forEach var="l" items="${list }">
+		<c:forEach var="l3" items="${list }">
 			<tr>
 				<td hidden="hidden">
-				<input type="hidden" name="bno" value="${l.bno }">
-				<input type="hidden" name="btitle" value="${l.btitle }">
-				<input type="hidden" name="bcontent" value="${l.bcontent }">
-				<input type="hidden" name="bwriter" value="${l.bwriter }">
-				<input type="hidden" name="bdate" value="${l.bdate }">
-				<input type="hidden" name="bhit" value="${l.bhit }">
+				<input type="hidden" name="bno" value="${l3.bno }">
+				<input type="hidden" name="btitle" value="${l3.btitle }">
+				<input type="hidden" name="bcontent" value="${l3.bcontent }">
+				<input type="hidden" name="bwriter" value="${l3.bwriter }">
+				<input type="hidden" name="bdate" value="${l3.bdate }">
+				<input type="hidden" name="bhit" value="${l3.bhit }">
 				</td>
 				<td><a href="listViewPage"><input type="button" value="목록"></a></td>
-				<td><input type="submit" value="수정"></td>
-				<td><a href="listDelete?bno=${l.bno }"><input type="button" value="삭제"></a></td>
+				<c:if test="${ l3.bwriter == member.id}">
+					<td><input type="submit" value="수정"></td>
+					<td><a href="listDelete?bno=${l3.bno }"><input type="button" value="삭제"></a></td>
+				</c:if>
 			</tr>
 		</c:forEach>
 		</table>

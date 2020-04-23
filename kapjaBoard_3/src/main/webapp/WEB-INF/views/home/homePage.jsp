@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,9 +35,18 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<div>
+	<h5>
+	<c:if test="${member != null }">
+		${member.id} <a href="memberLogout"> 로그아웃</a>
+	</c:if>
+	</h5>
+	</div>
+	<div align="center">
+		<h1 align="center"><a href="homePage">갑자의 홈풰이지</a></h1>
+	</div>
+	<c:if test="${member == null }">
 	<div id="home_body">
-		<h1>갑자의 홈풰이지</h1>
-		<h2>어서오시게</h2>
 		<form action="memberLogin" name="frm1" method="post" autocomplete="off">
 			<div>
 				<div>로그인</div>
@@ -54,6 +64,13 @@
 				<div><a href="kapjaJoinPage"><input type="button" value="가입하기"></a></div>
 			</div>
 	</div>
+	</c:if>
+	<c:if test="${member != null }">
+	<div align="center">
+		<h2>어서오시게</h2>
+		<a href="listViewPage">게시판</a>
+	</div>
+	</c:if>
 	
 <script type="text/javascript">
 $("#homePassword").keyup(function(){

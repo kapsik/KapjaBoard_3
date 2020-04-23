@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fasterxml.jackson.annotation.JacksonInject.Value;
 import com.kapjaBrothers.springBoard.entity.membersData;
 import com.kapjaBrothers.springBoard.service.memberService;
 import com.kapjaBrothers.springBoard.service.memberServiceImpl;
@@ -75,7 +76,7 @@ public class HomeController {
 	@RequestMapping(value = "/memberJoin", method = RequestMethod.POST)
 	public String memberJoin(Model model, membersData mData) {
 		System.out.println("HomeController(memberJoin)");
-		System.out.println(mData);
+		//System.out.println(mData);
 		
 		memberService ms = new memberServiceImpl();
 		ms.memberRegister(mData);
@@ -89,10 +90,11 @@ public class HomeController {
 		//System.out.println(mData);
 		
 		HttpSession session = request.getSession();
+		System.out.println("getServletPath = "+request.getServletPath());
 		memberService ms = new memberServiceImpl();
 		membersData result = ms.memberLogin(mData);
 		
-		if(result == null) {
+		if(result.getId() == null) {
 			session.setAttribute("member", null);
 			rttr.addFlashAttribute("msg", false);
 			System.out.println("result = null");
@@ -103,6 +105,15 @@ public class HomeController {
 		
 		return "redirect:/listViewPage";
 		
+	}
+	
+	@RequestMapping(value = "/memberLogout",method = RequestMethod.GET)
+	public String memberLogout(HttpSession session) {
+		System.out.println("HomeController(memberLogout)");
+		
+		session.invalidate();
+		
+		return"redirect:/homePage";
 	}
 
 }

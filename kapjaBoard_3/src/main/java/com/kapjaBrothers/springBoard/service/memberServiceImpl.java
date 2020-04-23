@@ -164,6 +164,7 @@ public class memberServiceImpl implements memberService{
 	@Override
 	public membersData memberLogin(membersData mData) {
 		membersData mData2 = new membersData();
+		
 		System.out.println("memberServiceImpl(memberLogin)");
 		
 		String url = "jdbc:oracle:thin:@localhost:1521:orcl";

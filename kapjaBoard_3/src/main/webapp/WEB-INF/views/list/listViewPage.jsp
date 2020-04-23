@@ -14,10 +14,10 @@
 			<c:if test="${member != null }">
 				${member.id }
 			</c:if>
-			<c:if test="${member != null}"><a href="">로그아웃</a></c:if>
+			<c:if test="${member != null}"><a href="memberLogout">로그아웃</a></c:if>
 			<c:if test="${member == null}"><a href="">로그인</a></c:if>
 		</h5>
-		<h1 align="center"><a href="homePage">홈으로</a></h1>
+		<h1 align="center"><a href="homePage">갑자의 홈풰이지</a></h1>
 	</div>
 	<div id="listViewBody" align="center" >
 		<h1>갑자게시판(목록페이지)</h1>

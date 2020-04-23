@@ -31,11 +31,12 @@
 </script>
 <body>
 	<div align="center">
+		<h1 align="center"><a href="homePage">홈으로</a></h1>
 		<form action="listInsert" name="frm1">
+		<h1>갑자게시판(작성페이지)</h1>
 		<table border="1">
-			<h1>갑자게시판(작성페이지)</h1>
 			<tr>
-				<td>작성자</td><td><input hidden="hidden" /><input type="text" name="bwriter"></td>
+				<td>작성자</td><td><input hidden="hidden" /><input type="text" name="bwriter" value="${member.id}" readonly="readonly"></td>
 				<td>제목</td><td><input hidden="hidden" /><input type="text" name="btitle" ></td>
 			</tr>
 			<tr>
