@@ -98,6 +98,8 @@ public class HomeController {
 			session.setAttribute("member", null);
 			rttr.addFlashAttribute("msg", false);
 			System.out.println("result = null");
+			System.out.println("아이디와 비밀번호를 확인해주세요");
+			return "redirect:/homePage";
 		}else {
 			session.setAttribute("member", result);
 			System.out.println("result = " + result);

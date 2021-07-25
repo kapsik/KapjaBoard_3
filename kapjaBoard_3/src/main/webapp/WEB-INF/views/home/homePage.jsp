@@ -8,30 +8,7 @@
 <link rel="stylesheet" type="text/css" href="resources/css/homePage.css">
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript">
-
-	function check_onclick() {
-		
-		var theForm = document.frm1;
-		
-		if(theForm.homeId.value == "" || theForm.homePassword.value == ""){
-			if(theForm.homeId.value == ""){
-				alert("아이디를 입력하시오");
-				return theForm.homeId.focus();
-			}else if(theForm.homePassword.value == ""){
-				alert("비밀번호를 입력하시오");
-				return theForm.homePassword.focus();
-			}
-		}else if(theForm.homeId.value != "" && theForm.homePassword.value != ""){
-			console.log("잘했어치타");
-			theForm.submit();
-		}
-		
-		
-		
-	}
-
-</script>
+<script type="text/javascript" src="resources/js/home.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -49,7 +26,7 @@
 	<div id="home_body">
 		<form action="memberLogin" name="frm1" method="post" autocomplete="off">
 			<div>
-				<div>로그인</div>
+				<div>login</div>
 				<div><input type="text" id="homeId" name="id" placeholder="아이디 입력"></div>
 			</div>
 			<div>
@@ -73,9 +50,16 @@
 	</c:if>
 	
 <script type="text/javascript">
+$(document).ready(function(){
+	alert("왜?");
+});
+
 $("#homePassword").keyup(function(){
 	$(this).val($(this).val().toUpperCase());
 });
+
+
+
 </script>		
 </body>
 </html>
